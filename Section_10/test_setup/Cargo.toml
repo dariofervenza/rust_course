@@ -1,7 +1,6 @@
 [package]
-name = "vectors"
+name = "test_setup"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rand = "0.8.4"
