@@ -1,7 +1,6 @@
 [package]
-name = "closures"
+name = "box_and_dereferencing"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-text-colorizer = "1"
