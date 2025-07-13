@@ -57,5 +57,6 @@ fn main() {
     // box allows inmutable or mutable borrows checked at compile time
     // Rc allows only inmutable borrows checked at compile time
     // RefCell allows mutable and inmutable borrows checked at RUNTIME
+    // and because refcell is checked at runtime, allows mutating values inside the refcell when the refcell is inmutable
 
 }
