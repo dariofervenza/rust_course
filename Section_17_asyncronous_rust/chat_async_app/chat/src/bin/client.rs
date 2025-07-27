@@ -77,9 +77,24 @@ async fn messages(server: net::TcpStream) -> ChatResult<()> {
         }
     }
     Ok(())
-
 }
 
-fn main() {
 
+// main function that connects to the server and sends and receives messages
+fn main() -> ChatResult<()> {
+    let addr = std::env::args().nth(1).expect("Address:PORT");  // tell the server ip and port as arguments (when executing the app)
+    task::block_on(async {  // block main thread here
+        let socket = net::TcpStream::connect(addr).await?;  // connecting to the server using ip and port // similar to pythons socket.socket
+        socket.set_nodelay(true)?;  // ensure segments are sent as soon as possible even if there is a small amount of data
+        // if it is not set, the data will buffer until it accumulates a minimum quantity
+
+        // create 2 new tasks with the functions we created
+        let send = send(socket.clone());
+        let replies = messages(socket);
+
+        // run these 2 new tasks concurrently and see which one completes first
+
+        replies.race(send).await?;
+        Ok(())
+    });
 }
