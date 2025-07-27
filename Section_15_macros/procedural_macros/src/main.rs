@@ -15,5 +15,5 @@ fn main() {
 
     // ATTRIBUTE MACRO EXAMPLE:
 
-    // (go to the library)
+    // (go to the library macros)
 }
